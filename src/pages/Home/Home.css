@@ -1,0 +1,34 @@
+.home-container{
+    display: flex;
+    justify-content: center;
+    color: var(--white);
+}
+.heading{
+    border-bottom: 1px solid gray;
+    padding: 0.5rem;
+    text-align: center;
+    background-color: var( --card-color);
+}
+.middle-container{
+    width: 49vw;
+background-color: var(--card-color);
+}
+.sidebar-left-container,.sidebar-right-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 348px;
+        height: 100%;
+        grid-gap: 2rem;
+        gap: 2rem; 
+        overflow-y: auto;
+        padding: 1rem 2rem 80px;
+}
+.sidebar-left-container{
+    position: fixed;
+    left: 0;
+}
+.sidebar-right-container{
+    position: fixed;
+    right: 0;
+}

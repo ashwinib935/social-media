@@ -1,0 +1,27 @@
+.container-postcard{
+    background-color: var(--card-color);
+}
+.postcard{
+    background-color: var(--card-color);
+}
+.option-container{
+    position: absolute;
+    right: 0.5rem;
+    top:1.3rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: var( --primary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.option-container button{
+    text-align: start;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+.option-container button:hover{
+    /* padding: 0.2rem; */
+    background-color: var(--card-color);
+}

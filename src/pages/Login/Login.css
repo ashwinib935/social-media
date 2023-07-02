@@ -1,0 +1,105 @@
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-card{
+   margin: 2rem 1rem 1rem 1rem;
+   width: 22rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   gap: 0.5rem;
+   grid-gap:0.5rem;
+   padding: 1.5rem 2rem 1rem;
+   background-color: var(--white);;
+   background-color: var(--card-color);
+
+}
+.main-header{
+    text-align: center;
+    color: var(--selected-color);
+    font-size: 2rem;
+    font-weight: bold;
+}
+.login-card-header{
+    text-align: center;
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.btn1 {
+ background-color: var(--secondary-color);
+ margin-bottom: 0.5rem;
+ padding: 0.5rem;
+ width: 100%;
+ color: var(--white);
+ border-radius: 20px;
+}
+.link-guest{
+    display: block;
+    width: 100%;
+    background-color: transparent;
+}
+.btn-guest{
+    padding: 0.5rem;
+    width: 100%;
+    color: var(--white);
+    border-radius: 20px;
+    background-color: transparent;
+    border: 1px solid var(--selected-color);
+}
+.login-card-item{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    grid-gap:0.5rem;
+    align-items: flex-start;
+}
+.login-card-item .text-input,.pwd-input,.btn{
+    width: 100%;
+    padding: 0.5rem
+}
+.sign-up-link{
+    color: var(--selected-color);
+    text-decoration: underline;
+}
+.sign-up{
+    color: var(--white);
+}
+
+.login-card-item-password{
+    position: relative;
+}
+.show-hide-password{
+    color: var(--white);
+    position: absolute;
+    top: 2.8rem;
+    right: 2rem;
+}
+label{
+    color: var(--white);
+}
+
+input[type="text"] {  background-color: transparent;
+    border: 1px solid var(--white); 
+    border-radius: 5px;
+    color: var(--white);
+}
+input[type=text]:focus{
+    border: 1px solid var(--white);    
+  }
+  input[type=text]:hover{
+    border: 1px solid var(--white);    
+  }
+input[type="password"] 
+{  background-color: transparent;
+    border: 1px solid var(--white); 
+    color: var(--white);
+}
+input[type=password]:focus{
+    border: 1px solid var(--white);    
+  }
+  input[type=password]:hover{
+    border: 1px solid var(--white);    
+  }

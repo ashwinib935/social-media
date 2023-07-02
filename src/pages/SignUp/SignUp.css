@@ -1,0 +1,74 @@
+.signup-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signup-card{
+   margin: 2rem 1rem 1rem 1rem;
+   width: 23rem;
+   display: flex;
+   flex-direction: column;
+   gap: 0.5rem;
+   grid-gap:0.5rem;
+   padding: 1.5rem 2rem 1rem;
+   overflow: auto;
+   background-color: var(--card-color);
+}
+.main-header{
+    text-align: center;
+    color: var(--selected-color);
+    font-size: 2rem;
+    font-weight: bold;
+}
+.signup-card-header{
+    text-align: center;
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.btn-signup {
+    background-color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    width: 100%;
+    color: var(--white);
+    border-radius: 20px;
+}
+
+.signup-card-item{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    grid-gap:0.5rem;
+    align-items: flex-start;
+}
+.signup-card-item-password{
+    position: relative;
+}
+.show-hide-password{
+    color: var(--white);
+    position: absolute;
+    top: 2.8rem;
+    right: 2rem;
+}
+.signup-card-item .text-input,.pwd-input,.btn{
+    width: 100%;
+    padding: 0.5rem
+}
+.link-home{
+    display: block;
+    width: 100%;
+}
+.signin-link{
+    color:  var(--selected-color) ;
+    text-decoration: underline;
+}
+.signin-footer{
+    color: var(--white);
+}
+input[type="password"] 
+{  background-color: transparent;
+    border: 1px solid var(--white); 
+    color: var(--white);
+    border-radius: 5px;
+}

@@ -1,0 +1,16 @@
+.post-heading{
+    display: flex;
+    gap: 17rem;
+    border-bottom: 1px solid gray;
+    padding: 0.5rem;
+    text-align: center;
+    background-color: var( --card-color);
+}
+.post-title{
+    text-align: center;
+}
+.back-icon{
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+}

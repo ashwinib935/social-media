@@ -1,0 +1,4 @@
+    .searchUserModal-container{
+        background-color: var(--card-color);
+        border: 1px solid var(--selected-color);
+    }

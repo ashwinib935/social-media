@@ -1,0 +1,18 @@
+.profile-image img{
+    height: 6rem;
+    width: 9rem;
+}
+.profile-image span{
+    height: 6rem;
+    width: 6rem;
+}
+.btn-unfollow{
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--selected-color);
+    border-radius: 20px;
+}
+.btn-follow{
+    background-color: var(--selected-color);
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+}

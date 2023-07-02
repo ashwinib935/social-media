@@ -1,0 +1,6 @@
+.newpost-container{
+    background-color: var(--card-color);
+}
+.btn-post{
+    background-color: var(--selected-color);
+}

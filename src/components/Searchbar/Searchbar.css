@@ -1,0 +1,7 @@
+.search-container{
+    background-color: var(--card-color) !important;
+}
+.search-input{
+    border: var( --selected-color) !important;
+    
+}

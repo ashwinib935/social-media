@@ -1,0 +1,6 @@
+.suggested-container {
+    background-color:var(--card-color) !important;
+}
+.btn-follow{
+    background-color: var(--selected-color);
+}

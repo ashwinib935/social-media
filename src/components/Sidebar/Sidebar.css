@@ -1,0 +1,55 @@
+  .sidebar-container ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .nav-item {
+    display: flex;
+    width: 150px;
+    gap: 0.3rem;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .nav-item:hover {
+    border-radius: 5px;
+    width: 150px;
+    font-weight: bold;
+  }
+
+  .sidebar-icon {
+    font-size: 1.5rem;
+  }
+
+  .sidebar-icon:hover {
+    font-weight: bold;
+  }
+
+  .main-header-home {
+    text-align: center;
+    color: var(--selected-color);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .home-logout {
+    display: flex;
+    gap: 0.3rem;
+  }
+
+  .home-logout:hover {
+    border-radius: 5px;
+    /* padding: 0.5rem 0.3rem; */
+    width: 150px;
+    font-weight: bold;
+  }
+
+  .home-logout:active {
+    background-color: var(--card-color);
+    border-radius: 5px;
+    padding: 0.5rem 0.3rem;
+    width: 150px;
+    font-weight: bold;
+  }
