@@ -37,7 +37,6 @@ function EditProfileModal({ setEditModal }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("clodinary response:", data);
         return updateProfile({
           editInput: {
             ...currentUser,

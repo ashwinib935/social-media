@@ -1,18 +1,29 @@
 import React, { useRef, useState } from "react";
 import { usePost } from "../../context/PostProvider";
 import { focusInputSelect } from "../../utils/focusInputSelect";
-
+import { toast } from "react-toastify";
 import UserAvatar from "../UserAvatar/UserAvatar";
+import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import "./NewPost.css";
+import { uploadImage } from "../../utils/uploadImage";
 
 function NewPost({ userProfile, token, loggedInUser }) {
   const [input, setInput] = useState("");
+  const [image, setImage] = useState(null);
   const { createPost } = usePost();
   const newPostRef = useRef();
-  const submitPost = (e) => {
+
+  const submitPost = async (e) => {
     e.preventDefault();
-    createPost({ input, postImage: "", token, user: userProfile });
+    if (image) {
+      const response = await uploadImage(image);
+      createPost({ input, postImage: response.url, token, user: userProfile });
+    } else {
+      createPost({ input, postImage: "", token, user: userProfile });
+    }
+
     setInput("");
+    setImage(null);
     newPostRef.current.innerText = "";
   };
 
@@ -35,6 +46,19 @@ function NewPost({ userProfile, token, loggedInUser }) {
           onInput={(e) => setInput(e.currentTarget.textContent)}
         />
         <div className="ml-auto flex items-center gap-4">
+          <label className="cursor-pointer text-lg">
+            <input
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={(e) =>
+                Math.round(e.target.files[0].size / 1024000) > 1
+                  ? toast.error("File size should not be more than 1Mb")
+                  : setImage(e.target.files[0])
+              }
+            />
+            <InsertPhotoIcon />
+          </label>
           <button
             type="submit"
             className="btn-post rounded-full py-1 px-3 disabled:opacity-50 disabled:cursor-not-allowed"

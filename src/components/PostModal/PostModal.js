@@ -2,25 +2,43 @@ import React, { useEffect, useRef, useState } from "react";
 import { usePost } from "../../context/PostProvider";
 import { focusInputSelect } from "../../utils/focusInputSelect";
 import UserAvatar from "../UserAvatar/UserAvatar";
+import { toast } from "react-toastify";
+import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import "./PostModal.css";
+import { uploadImage } from "../../utils/uploadImage";
 function PostModal({ post, setNewPostModal, setShowOption, currentUser }) {
   const [input, setInput] = useState(post || {});
+  const [image, setImage] = useState(null);
   const token = localStorage.getItem("encodedToken");
   const { editPost } = usePost();
   const newPostRef = useRef();
-  const submitEditPost = (e) => {
+  const submitEditPost = async (e) => {
     e.preventDefault();
     if (post) {
-      editPost({
-        input: input?.content,
-        postImage: input?.postImage,
-        token,
-        post,
-      });
-      setInput({});
-      setNewPostModal(false);
+      if (image) {
+        const response = await uploadImage(image);
+        editPost({
+          input: input?.content,
+          postImage: response.url,
+          token,
+          post,
+        });
+      } else {
+        editPost({
+          input: input?.content,
+          postImage: input?.postImage,
+          token,
+          post,
+        });
+      }
       setShowOption(false);
-      newPostRef.current.innerText = "";
+      setInput("");
+      setImage(null);
+      setNewPostModal(false);
+      if (newPostRef.current !== null) {
+        newPostRef.current.innerText = "";
+      }
     }
   };
   useEffect(() => {
@@ -51,25 +69,62 @@ function PostModal({ post, setNewPostModal, setShowOption, currentUser }) {
             }))
           }
         />
-        <div className="flex gap-2">
-          <button
-            type="reset"
-            className="border border-primary rounded-full py-1 px-3"
-            onClick={() => {
-              post && setNewPostModal(false);
-              setShowOption(false);
-            }}
-          >
-            Cancel
-          </button>
+        {input?.postImage || image ? (
+          <div className="relative">
+            <img
+              src={image ? URL.createObjectURL(image) : input?.postImage}
+              className="w-full h-auto rounded-md"
+              alt={image?.name.split(".")[0]}
+            />
+            <button
+              type="button"
+              className="absolute top-1 right-2 text-lg"
+              onClick={() =>
+                input?.postImage
+                  ? setInput((prev) => ({ ...prev, postImage: null }))
+                  : setImage(null)
+              }
+            >
+              <CloseRoundedIcon className="rounded-full bg-darkSecondary" />
+            </button>
+          </div>
+        ) : null}
+        <div className="flex justify-between gap-2">
+          <label className="cursor-pointer text-lg">
+            <input
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={(e) => {
+                if (Math.round(e.target.files[0].size / 1024000) > 1) {
+                  toast.error("File size should not be more than 1Mb");
+                } else {
+                  setImage(e.target.files[0]);
+                }
+              }}
+            />
+            <InsertPhotoIcon />
+          </label>
+          <div className="flex gap-2">
+            <button
+              type="reset"
+              className="border border-primary rounded-full py-1 px-3"
+              onClick={() => {
+                post && setNewPostModal(false);
+                setShowOption(false);
+              }}
+            >
+              Cancel
+            </button>
 
-          <button
-            type="submit"
-            className="btn-post rounded-full py-1 px-3 disabled:opacity-50 disabled:cursor-not-allowed"
-            disabled={!input?.content?.trim()}
-          >
-            {post ? "Save" : "Post"}
-          </button>
+            <button
+              type="submit"
+              className="btn-post rounded-full py-1 px-3 disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={!input?.content?.trim()}
+            >
+              {post ? "Save" : "Post"}
+            </button>
+          </div>
         </div>
       </form>
     </div>
